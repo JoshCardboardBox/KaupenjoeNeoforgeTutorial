@@ -32,11 +32,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.AZURITE_BLOCK.get());
         dropSelf(ModBlocks.RAW_AZURITE_BLOCK.get());
+
         add(ModBlocks.AZURITE_ORE.get(), createOreDrop(ModBlocks.AZURITE_BLOCK.get(), ModItems.RAW_AZURITE.get()));
         add(ModBlocks.AZURITE_DEEPSLATE_ORE.get(), createOreDrop(ModBlocks.AZURITE_DEEPSLATE_ORE.get(), ModItems.RAW_AZURITE.get()));
         add(ModBlocks.AZURITE_NETHER_ORE.get(), createMultipleOreDrops(ModBlocks.AZURITE_NETHER_ORE.get(), ModItems.RAW_AZURITE.get(), 1.0F, 10.0F));
         add(ModBlocks.AZURITE_END_ORE.get(), createMultipleOreDrops(ModBlocks.AZURITE_END_ORE.get(), ModItems.RAW_AZURITE.get(), 1.0F, 3.0F));
 
+        dropSelf(ModBlocks.MAGIC_BLOCK.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrop, float maxDrop) {

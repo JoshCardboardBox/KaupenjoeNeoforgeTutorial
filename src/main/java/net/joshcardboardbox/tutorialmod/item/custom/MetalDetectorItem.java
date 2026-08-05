@@ -44,10 +44,10 @@ public class MetalDetectorItem extends Item {
 
                     // damage the item
                     context.getItemInHand().hurtAndBreak(1, player, context.getHand());
-                    // play sound
+                    // play sound (server)
                     level.playSound(null, positionClicked, SoundEvents.ANVIL_LAND,
                             SoundSource.MASTER, 1.2f, 0.5F);
-                    // spawn particles
+                    // spawn particles (server)
                     spawnFoundParticles(level, positionClicked, blockState);
 
                     break;

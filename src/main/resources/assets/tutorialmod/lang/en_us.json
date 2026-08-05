@@ -14,5 +14,6 @@
   "creativetab.tutorialmod.azurite_blocks": "Azurite Tutorial Blocks",
 
   "item.tutorialmod.metal_detector": "Metal Detector",
-  "item.tutorialmod.metal_detector.no_valuables": "No Valuables Found..."
+  "item.tutorialmod.metal_detector.no_valuables": "No Valuables Found...",
+  "block.tutorialmod.magic_block": "Magic Block"
 }
