@@ -15,5 +15,6 @@
 
   "item.tutorialmod.metal_detector": "Metal Detector",
   "item.tutorialmod.metal_detector.no_valuables": "No Valuables Found...",
-  "block.tutorialmod.magic_block": "Magic Block"
+  "block.tutorialmod.magic_block": "Magic Block",
+  "item.tutorialmod.onion": "Onion"
 }

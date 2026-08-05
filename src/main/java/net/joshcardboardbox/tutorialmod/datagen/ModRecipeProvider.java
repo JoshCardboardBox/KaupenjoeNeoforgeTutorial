@@ -72,6 +72,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
                 .save(output);
 
+        //Items.Item has no get(), apparently this does work tho
+        shaped(RecipeCategory.FOOD, ModItems.ONION.get())
+                .pattern("###")
+                .pattern("#O#")
+                .pattern("###").define('#', ModItems.AZURITE). define('O', Items.POISONOUS_POTATO)
+                .unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO))
+                .save(output);
+
 
         //doesn't work bc puts it under data.minecraft.recipe
         //nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.AZURITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_BLOCK,

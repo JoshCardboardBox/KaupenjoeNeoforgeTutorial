@@ -21,9 +21,11 @@ public class ModModelProvider extends ModelProvider {
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels)
     {
+        /* Items */
         itemModels.generateFlatItem(ModItems.AZURITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_AZURITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.METAL_DETECTOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ONION.get(), ModelTemplates.FLAT_ITEM);
 
         /* Blocks - generate Item, Block, and block model JSON files*/
         blockModels.createTrivialCube(ModBlocks.AZURITE_BLOCK.get());
@@ -33,6 +35,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.AZURITE_NETHER_ORE.get());
         blockModels.createTrivialCube(ModBlocks.AZURITE_END_ORE.get());
         blockModels.createTrivialCube(ModBlocks.MAGIC_BLOCK.get());
+
     }
 
 }
