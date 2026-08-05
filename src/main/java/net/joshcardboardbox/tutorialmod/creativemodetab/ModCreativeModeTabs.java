@@ -32,6 +32,8 @@ public class ModCreativeModeTabs {
                     output.accept(ModItems.RAW_AZURITE);
                     output.accept(ModItems.METAL_DETECTOR);
                     output.accept(ModItems.ONION);
+                    output.accept(ModItems.END_FIRE_STARTER);
+                    output.accept(ModItems.TEXTURELESS_SWORD);
                 })
                 .build());
 

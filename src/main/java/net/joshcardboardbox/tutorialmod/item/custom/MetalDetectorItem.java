@@ -1,5 +1,6 @@
 package net.joshcardboardbox.tutorialmod.item.custom;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,11 +11,16 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.function.Consumer;
 
 public class MetalDetectorItem extends Item {
     public MetalDetectorItem(Properties properties) {
@@ -96,5 +102,18 @@ public class MetalDetectorItem extends Item {
         player.sendSystemMessage(Component.literal("Metallic Ore ")
                 .append(block.getName())
                 .append(Component.literal(" at Y:("+position.getY()+")")));
+    }
+
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+        //this is client side
+        if(Minecraft.getInstance().hasShiftDown()) {
+            builder.accept(Component.translatable("tooltip.tutorialmod.metal_detector.shift_down"));
+        } else {
+            builder.accept(Component.translatable("tooltip.tutorialmod.metal_detector"));
+        }
+
+        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
     }
 }

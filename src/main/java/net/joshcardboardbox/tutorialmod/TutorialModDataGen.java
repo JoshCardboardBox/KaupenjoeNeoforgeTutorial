@@ -1,9 +1,6 @@
 package net.joshcardboardbox.tutorialmod;
 
-import net.joshcardboardbox.tutorialmod.datagen.ModBlockLootTableProvider;
-import net.joshcardboardbox.tutorialmod.datagen.ModBlockTagsProvider;
-import net.joshcardboardbox.tutorialmod.datagen.ModModelProvider;
-import net.joshcardboardbox.tutorialmod.datagen.ModRecipeProvider;
+import net.joshcardboardbox.tutorialmod.datagen.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -29,6 +26,7 @@ public class TutorialModDataGen {
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput, lookupProvider));
+        generator.addProvider(true, new ModDataMapProvider(packOutput, lookupProvider));
     }
 
 }

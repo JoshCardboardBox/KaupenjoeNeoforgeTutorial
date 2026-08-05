@@ -26,6 +26,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RAW_AZURITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.METAL_DETECTOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ONION.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.END_FIRE_STARTER.get(), ModelTemplates.FLAT_ITEM);
+
+        //sword
+        itemModels.generateFlatItem(ModItems.TEXTURELESS_SWORD.get(), ModelTemplates.FLAT_ITEM);
+
 
         /* Blocks - generate Item, Block, and block model JSON files*/
         blockModels.createTrivialCube(ModBlocks.AZURITE_BLOCK.get());
