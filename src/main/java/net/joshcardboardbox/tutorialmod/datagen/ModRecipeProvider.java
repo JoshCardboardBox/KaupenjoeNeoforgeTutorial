@@ -63,6 +63,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(output);
 
 
+        shaped(RecipeCategory.TOOLS, ModItems.METAL_DETECTOR.get())
+                .pattern("#")
+                .pattern("A")
+                .pattern("A")
+                .define('#', ModBlocks.AZURITE_BLOCK)
+                .define('A', Items.IRON_INGOT)
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .save(output);
+
+
         //doesn't work bc puts it under data.minecraft.recipe
         //nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.AZURITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_BLOCK,
         //        getSimpleRecipeName(ModBlocks.AZURITE_BLOCK), TutorialMod.MODID+":"+getSimpleRecipeName(ModBlocks.AZURITE_BLOCK),
