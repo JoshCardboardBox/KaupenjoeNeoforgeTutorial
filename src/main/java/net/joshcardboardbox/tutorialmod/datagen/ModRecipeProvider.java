@@ -1,0 +1,110 @@
+package net.joshcardboardbox.tutorialmod.datagen;
+
+import net.joshcardboardbox.tutorialmod.TutorialMod;
+import net.joshcardboardbox.tutorialmod.block.ModBlocks;
+import net.joshcardboardbox.tutorialmod.item.ModItems;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+public class ModRecipeProvider extends RecipeProvider {
+    protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
+    }
+
+    @Override
+    protected void buildRecipes() {
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.AZURITE)
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite")
+                .save(output);
+        shapeless(RecipeCategory.MISC, ModItems.AZURITE.get(), 9)
+                .requires(ModBlocks.AZURITE_BLOCK)
+                .unlockedBy(getHasName(ModBlocks.AZURITE_BLOCK.get()), has(ModBlocks.AZURITE_BLOCK))
+                .group("azurite")
+                .save(output);
+        //will save it by name of output, also u need to add  modid:
+        shapeless(RecipeCategory.MISC, ModItems.AZURITE.get(), 18)
+                .requires(ModBlocks.RAW_AZURITE_BLOCK)
+                .requires(Items.BLAZE_POWDER)
+                .requires(Items.BLAZE_POWDER)
+                .unlockedBy(getHasName(ModBlocks.RAW_AZURITE_BLOCK.get()), has(ModBlocks.RAW_AZURITE_BLOCK))
+                .group("azurite")
+                .save(output, TutorialMod.MODID+":azurite_from_blaze_powder");
+
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_AZURITE_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.RAW_AZURITE)
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite")
+                .save(output);
+        shapeless(RecipeCategory.MISC, ModItems.RAW_AZURITE.get(), 9)
+                .requires(ModBlocks.RAW_AZURITE_BLOCK)
+                .unlockedBy(getHasName(ModBlocks.RAW_AZURITE_BLOCK.get()), has(ModBlocks.RAW_AZURITE_BLOCK))
+                .group("raw_azurite")
+                .save(output);
+
+
+        //doesn't work bc puts it under data.minecraft.recipe
+        //nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.AZURITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_BLOCK,
+        //        getSimpleRecipeName(ModBlocks.AZURITE_BLOCK), TutorialMod.MODID+":"+getSimpleRecipeName(ModBlocks.AZURITE_BLOCK),
+        //        getSimpleRecipeName(ModItems.AZURITE), TutorialMod.MODID+":"+getSimpleRecipeName(ModItems.AZURITE));
+
+        List<ItemLike> AZURITE_SMELTABLES = List.of(ModItems.RAW_AZURITE,
+                ModBlocks.AZURITE_ORE, ModBlocks.AZURITE_NETHER_ORE, ModBlocks.AZURITE_END_ORE);
+        oreSmelting(AZURITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.AZURITE.get(), 0.25f, 500, "azurite");
+        oreBlasting(AZURITE_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.AZURITE.get(), 0.25f, 100, "azurite");
+
+
+    }
+
+    //polymorphism calls this. mainly for tutorialMod.modid
+    @Override
+    protected <T extends AbstractCookingRecipe> void oreCooking(AbstractCookingRecipe.Factory<T> factory, List<ItemLike> smeltables,
+                                                                RecipeCategory craftingCategory, CookingBookCategory cookingCategory, ItemLike result,
+                                                                float experience, int cookingTime, String group, String fromDesc) {
+        for(ItemLike itemlike : smeltables) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), craftingCategory, cookingCategory, result, experience, cookingTime, factory).group(group).unlockedBy(getHasName(itemlike), has(itemlike))
+                    .save(output, TutorialMod.MODID + ":" + getItemName(result) + fromDesc + "_" + getItemName(itemlike));
+        }
+    }
+
+
+
+
+    //class inside class
+    public static class Runner extends RecipeProvider.Runner {
+
+        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
+            super(packOutput, registries);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput recipeOutput) {
+            return new ModRecipeProvider(registries, recipeOutput);
+        }
+
+        @Override
+        public String getName() {
+            return "Tutorial Mod Recipes";
+        }
+    }
+}
