@@ -1,5 +1,7 @@
 package net.joshcardboardbox.tutorialmod.item.custom;
 
+import net.joshcardboardbox.tutorialmod.block.ModBlocks;
+import net.joshcardboardbox.tutorialmod.tags.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -9,6 +11,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,6 +48,19 @@ public class MetalDetectorItem extends Item {
             {
                 BlockState blockState = level.getBlockState(positionClicked.below(i));
 
+                //if magic block, deny your search
+                if (blockState.is(ModBlocks.MAGIC_BLOCK))
+                {
+                    // play sound (server)
+                    level.playSound(null, positionClicked, SoundEvents.ALLAY_HURT,
+                            SoundSource.MASTER, 1.2f, 0.5F);
+
+                    player.addEffect(new MobEffectInstance(MobEffects.WITHER, 100));
+
+                    break;
+                }
+
+                //look for ores
                 if(isValuableBlock(blockState)) {
                     outputValuableCoordinates(positionClicked.below(i), player, blockState.getBlock());
                     foundBlock = true;
@@ -87,11 +104,12 @@ public class MetalDetectorItem extends Item {
 
     private boolean isValuableBlock(BlockState blockState)
     {
-        return blockState.is(Blocks.IRON_ORE) || blockState.is(Blocks.DEEPSLATE_IRON_ORE)
+        /*return blockState.is(Blocks.IRON_ORE) || blockState.is(Blocks.DEEPSLATE_IRON_ORE)
                 || blockState.is(Blocks.GOLD_ORE) || blockState.is(Blocks.DEEPSLATE_GOLD_ORE)
                 || blockState.is(Blocks.COPPER_ORE) || blockState.is(Blocks.DEEPSLATE_COPPER_ORE)
                 || blockState.is(Blocks.ANCIENT_DEBRIS)
-                ;
+                ; */
+        return blockState.is(ModTags.Blocks.METAL_DETECTABLES);
     }
 
     private void outputNoValuablesFound(Player player) {

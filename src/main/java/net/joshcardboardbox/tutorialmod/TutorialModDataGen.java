@@ -22,6 +22,7 @@ public class TutorialModDataGen {
         var lookupProvider = event.getLookupProvider();
 
         generator.addProvider(true, new ModModelProvider(packOutput));
+        generator.addProvider(true, new ModItemTagsProvider(packOutput, lookupProvider, TutorialMod.MODID));
         generator.addProvider(true, new ModBlockTagsProvider(packOutput, lookupProvider, TutorialMod.MODID));
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));

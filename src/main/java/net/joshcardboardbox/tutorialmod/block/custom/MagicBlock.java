@@ -1,6 +1,7 @@
 package net.joshcardboardbox.tutorialmod.block.custom;
 
 import net.joshcardboardbox.tutorialmod.item.ModItems;
+import net.joshcardboardbox.tutorialmod.tags.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -61,7 +62,8 @@ public class MagicBlock extends Block {
 
     /** Check if this is one of the items that can be converted by this block */
     private boolean isValidItem(ItemStack item) {
-        return item.is(Items.REDSTONE) || item.is(ModItems.AZURITE);
+        //return item.is(Items.REDSTONE) || item.is(ModItems.AZURITE);
+        return item.is(ModTags.Items.MAGIC_TRANSFORMABLES);
     }
 
     /** This literally makes the block disappear lol. */
