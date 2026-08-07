@@ -43,12 +43,31 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.tutorialmod.azurite_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.AZURITE_BLOCK);
+                        output.accept(ModBlocks.AZURITE_SLAB);
+                        output.accept(ModBlocks.AZURITE_STAIRS);
+                        output.accept(ModBlocks.AZURITE_PRESSURE_PLATE);
+                        output.accept(ModBlocks.AZURITE_BUTTON);
+                        output.accept(ModBlocks.AZURITE_FENCE);
+                        output.accept(ModBlocks.AZURITE_FENCE_GATE);
+                        output.accept(ModBlocks.AZURITE_WALL);
+                        output.accept(ModBlocks.AZURITE_DOOR);
+                        output.accept(ModBlocks.AZURITE_TRAPDOOR);
                         output.accept(ModBlocks.RAW_AZURITE_BLOCK);
+                        output.accept(ModBlocks.RAW_AZURITE_SLAB);
+                        output.accept(ModBlocks.RAW_AZURITE_STAIRS);
+                        output.accept(ModBlocks.RAW_AZURITE_PRESSURE_PLATE);
+                        output.accept(ModBlocks.RAW_AZURITE_BUTTON);
+                        output.accept(ModBlocks.RAW_AZURITE_FENCE);
+                        output.accept(ModBlocks.RAW_AZURITE_FENCE_GATE);
+                        output.accept(ModBlocks.RAW_AZURITE_WALL);
+                        output.accept(ModBlocks.RAW_AZURITE_DOOR);
+                        output.accept(ModBlocks.RAW_AZURITE_TRAPDOOR);
                         output.accept(ModBlocks.AZURITE_ORE);
                         output.accept(ModBlocks.AZURITE_DEEPSLATE_ORE);
                         output.accept(ModBlocks.AZURITE_NETHER_ORE);
                         output.accept(ModBlocks.AZURITE_END_ORE);
                         output.accept(ModBlocks.MAGIC_BLOCK);
+                        output.accept(ModBlocks.MAGIC_SLAB);
                         output.accept(Blocks.TUFF.asItem()); //TEST
                         output.accept(Items.DIAMOND); //test
                     })

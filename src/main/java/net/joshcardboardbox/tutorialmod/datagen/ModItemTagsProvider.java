@@ -1,5 +1,6 @@
 package net.joshcardboardbox.tutorialmod.datagen;
 
+import net.joshcardboardbox.tutorialmod.block.ModBlocks;
 import net.joshcardboardbox.tutorialmod.item.ModItems;
 import net.joshcardboardbox.tutorialmod.tags.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -20,6 +21,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(Items.IRON_INGOT)
                 .add(ModItems.AZURITE.get())
                 .add(Items.REDSTONE)
+                .add(ModBlocks.MAGIC_SLAB.asItem());
         ;
     }
 }

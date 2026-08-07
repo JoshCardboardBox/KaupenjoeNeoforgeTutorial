@@ -47,6 +47,30 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("azurite")
                 .save(output, TutorialMod.MODID+":azurite_from_blaze_powder");
 
+        slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_SLAB.get(), ModItems.AZURITE.get());
+        stairBuilder(ModBlocks.AZURITE_STAIRS.get(), Ingredient.of(ModItems.AZURITE))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite").save(output);
+        pressurePlate(ModBlocks.AZURITE_PRESSURE_PLATE, ModItems.AZURITE.get());
+        buttonBuilder(ModBlocks.AZURITE_BUTTON, Ingredient.of(ModItems.AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite"). save(output);
+        fenceBuilder(ModBlocks.AZURITE_FENCE, Ingredient.of(ModItems.AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite"). save(output);
+        fenceGateBuilder(ModBlocks.AZURITE_FENCE_GATE, Ingredient.of(ModItems.AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite"). save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AZURITE_WALL, Ingredient.of(ModBlocks.AZURITE_BLOCK.get()))
+                .unlockedBy(getHasName(ModBlocks.AZURITE_BLOCK.get()), has(ModBlocks.AZURITE_BLOCK))
+                .group("azurite"). save(output);
+        doorBuilder(ModBlocks.AZURITE_DOOR, Ingredient.of(ModItems.AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite"). save(output);;
+        trapdoorBuilder(ModBlocks.AZURITE_TRAPDOOR, Ingredient.of(ModItems.AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.AZURITE.get()), has(ModItems.AZURITE))
+                .group("azurite"). save(output);;
+
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_AZURITE_BLOCK.get())
                 .pattern("###")
@@ -62,6 +86,30 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("raw_azurite")
                 .save(output);
 
+        slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_AZURITE_SLAB.get(), ModItems.RAW_AZURITE.get());
+        stairBuilder(ModBlocks.RAW_AZURITE_STAIRS.get(), Ingredient.of(ModItems.RAW_AZURITE))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .save(output);
+        pressurePlate(ModBlocks.RAW_AZURITE_PRESSURE_PLATE, ModItems.RAW_AZURITE.get());
+        buttonBuilder(ModBlocks.RAW_AZURITE_BUTTON, Ingredient.of(ModItems.RAW_AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite"). save(output);
+        fenceBuilder(ModBlocks.RAW_AZURITE_FENCE, Ingredient.of(ModItems.RAW_AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite"). save(output);;
+        fenceGateBuilder(ModBlocks.RAW_AZURITE_FENCE_GATE, Ingredient.of(ModItems.RAW_AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite"). save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_AZURITE_WALL, Ingredient.of(ModBlocks.RAW_AZURITE_BLOCK.get()))
+                .unlockedBy(getHasName(ModBlocks.RAW_AZURITE_BLOCK.get()), has(ModBlocks.RAW_AZURITE_BLOCK))
+                .group("raw_azurite"). save(output);
+        //generateForEnabledBlockFamilies();
+        doorBuilder(ModBlocks.RAW_AZURITE_DOOR, Ingredient.of(ModItems.RAW_AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite"). save(output);;
+        trapdoorBuilder(ModBlocks.RAW_AZURITE_TRAPDOOR, Ingredient.of(ModItems.RAW_AZURITE.get()))
+                .unlockedBy(getHasName(ModItems.RAW_AZURITE.get()), has(ModItems.RAW_AZURITE))
+                .group("raw_azurite"). save(output);;
 
         shaped(RecipeCategory.TOOLS, ModItems.METAL_DETECTOR.get())
                 .pattern("#")
@@ -79,6 +127,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###").define('#', ModItems.AZURITE). define('O', Items.POISONOUS_POTATO)
                 .unlockedBy(getHasName(Items.POISONOUS_POTATO), has(Items.POISONOUS_POTATO))
                 .save(output);
+
+
+
+
 
 
         //doesn't work bc puts it under data.minecraft.recipe

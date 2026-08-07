@@ -30,15 +30,36 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        //AZURITES
         dropSelf(ModBlocks.AZURITE_BLOCK.get());
+        add(ModBlocks.AZURITE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.AZURITE_STAIRS.get());
+        dropSelf(ModBlocks.AZURITE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.AZURITE_BUTTON.get());
+        dropSelf(ModBlocks.AZURITE_FENCE.get());
+        dropSelf(ModBlocks.AZURITE_FENCE_GATE.get());
+        dropSelf(ModBlocks.AZURITE_WALL.get());
+        add(ModBlocks.AZURITE_DOOR.get(), this::createDoorTable);
+        dropSelf(ModBlocks.AZURITE_TRAPDOOR.get());
         dropSelf(ModBlocks.RAW_AZURITE_BLOCK.get());
+        add(ModBlocks.RAW_AZURITE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(ModBlocks.RAW_AZURITE_STAIRS.get());
+        dropSelf(ModBlocks.RAW_AZURITE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.RAW_AZURITE_BUTTON.get());
+        dropSelf(ModBlocks.RAW_AZURITE_FENCE.get());
+        dropSelf(ModBlocks.RAW_AZURITE_FENCE_GATE.get());
+        dropSelf(ModBlocks.RAW_AZURITE_WALL.get());
+        add(ModBlocks.RAW_AZURITE_DOOR.get(), this::createDoorTable);
+        dropSelf(ModBlocks.RAW_AZURITE_TRAPDOOR.get());
 
         add(ModBlocks.AZURITE_ORE.get(), createOreDrop(ModBlocks.AZURITE_BLOCK.get(), ModItems.RAW_AZURITE.get()));
         add(ModBlocks.AZURITE_DEEPSLATE_ORE.get(), createOreDrop(ModBlocks.AZURITE_DEEPSLATE_ORE.get(), ModItems.RAW_AZURITE.get()));
         add(ModBlocks.AZURITE_NETHER_ORE.get(), createMultipleOreDrops(ModBlocks.AZURITE_NETHER_ORE.get(), ModItems.RAW_AZURITE.get(), 1.0F, 10.0F));
         add(ModBlocks.AZURITE_END_ORE.get(), createMultipleOreDrops(ModBlocks.AZURITE_END_ORE.get(), ModItems.RAW_AZURITE.get(), 1.0F, 3.0F));
 
+        //OTHER
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
+        dropSelf(ModBlocks.MAGIC_SLAB.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrop, float maxDrop) {
